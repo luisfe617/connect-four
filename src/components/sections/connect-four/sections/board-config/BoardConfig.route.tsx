@@ -8,7 +8,12 @@ const boardRoute = (props: any) => {
       key="boardconfig"
       path={`${props.match.url}`}
       exact
-      render={() => <BoardConfigComponent {...props} />}
+      render={() => (
+        <BoardConfigComponent
+          boardSize={props.boardSizeConfig}
+          onChange={props.onBoardSizeChange}
+        />
+      )}
     />
   );
 };

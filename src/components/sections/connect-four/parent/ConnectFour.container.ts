@@ -14,7 +14,7 @@ const mapStateToProps = (state: GameState): ConnectedState => ({
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): ConnectedDispatch => ({
-  setBoardConfigNumber: (number: number) =>
+  onBoardSizeChange: (number: number) =>
     dispatch(Actions.setBoardConfigNumber(number))
 });
 

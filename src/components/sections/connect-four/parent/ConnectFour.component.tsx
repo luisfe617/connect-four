@@ -14,7 +14,7 @@ export interface ConnectedState {
 }
 
 export interface ConnectedDispatch {
-  setBoardConfigNumber: (number: number) => void;
+  onBoardSizeChange: (number: number) => void;
 }
 
 export interface OwnState {}

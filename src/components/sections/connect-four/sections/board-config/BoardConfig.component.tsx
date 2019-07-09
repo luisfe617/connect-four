@@ -6,12 +6,16 @@ import Slider from '@material-ui/lab/Slider';
 import useStyles from './BoardConfig.styles';
 
 interface OwnProps {
-  boardSizeConfig: number | number[];
-  onChange: (event: any, value: number | number[]) => void;
+  boardSize: number | number[];
+  onChange: (value: number | number[]) => void;
 }
 
 const BoardConfig = (props: OwnProps) => {
   const classes = useStyles();
+
+  const onChangeHandler = (event: any, value: number | number[]) => {
+    props.onChange(value);
+  };
 
   return (
     <div className={classes.boardConfigContainer}>
@@ -20,14 +24,14 @@ const BoardConfig = (props: OwnProps) => {
       </Typography>
       <div className={classes.sliderContainer}>
         <Slider
-          defaultValue={props.boardSizeConfig}
+          defaultValue={props.boardSize}
           valueLabelFormat={sliderTextValue}
           aria-labelledby="discrete-slider"
           valueLabelDisplay="on"
           step={1}
           min={4}
           max={10}
-          onChangeCommitted={props.onChange}
+          onChangeCommitted={onChangeHandler}
           className={classes.slider}
         />
       </div>
