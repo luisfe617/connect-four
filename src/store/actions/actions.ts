@@ -9,6 +9,7 @@ import {
   SET_CURRENT_PLAYER,
   SET_GAME_OVER
 } from "./actionTypes";
+import { GameState } from "../../core/models/state.model";
 
 export const addDisc = (payload: any): ConnectFourTypes => {
   return {
@@ -24,10 +25,11 @@ export const removeDisc = (payload: any): ConnectFourTypes => {
   };
 };
 
-export const setBoardGrid = (payload: any): ConnectFourTypes => {
-  return {
-    type: SET_BOARD_GRID,
-    payload
+export const setBoardConfiguration = (number: number) => {
+  return (dispatch: any, getState: () => GameState) => {
+    dispatch(setBoardConfigNumber(number));
+    dispatch(setDiscsNumber(number));
+    dispatch(setBoardGrid(number));
   };
 };
 
@@ -43,6 +45,15 @@ export const setBoardConfigNumber = (number: number): ConnectFourTypes => {
 export const setDiscsNumber = (number: number): ConnectFourTypes => {
   return {
     type: SET_DISCS_NUMBER,
+    payload: {
+      number
+    }
+  };
+};
+
+export const setBoardGrid = (number: number): ConnectFourTypes => {
+  return {
+    type: SET_BOARD_GRID,
     payload: {
       number
     }

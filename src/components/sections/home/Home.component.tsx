@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 
-import { Button } from '@material-ui/core';
+import { Button } from "@material-ui/core";
 
-import AdapterLink from '../../../core/common/components/AdapterLink';
-import logoImage from '../../../assets/images/logo.svg';
-import useStyles from './Home.styles';
+import AdapterLink from "../../../core/common/components/AdapterLink";
+import logoImage from "../../../assets/images/logo.svg";
+import useStyles from "./Home.styles";
 
 const Home = () => {
   const classes = useStyles();
@@ -21,7 +21,7 @@ const Home = () => {
         color="secondary"
         className={classes.link}
         component={AdapterLink}
-        to="/connect-four"
+        to="/game-config"
       >
         Start Game
       </Button>

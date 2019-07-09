@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
-import { withStyles } from '@material-ui/styles';
+import { withStyles } from "@material-ui/styles";
 
-import styles from './ConnectFour.styles';
-import ConnectFourRouting from '../ConnectFour.routing';
+import styles from "./ConnectFour.styles";
+import ConnectFourRouting from "../ConnectFour.routing";
 
 export interface OwnProps {
   classes?: any;

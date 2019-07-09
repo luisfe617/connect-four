@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
-import { Typography } from '@material-ui/core';
-import Slider from '@material-ui/lab/Slider';
+import { Typography } from "@material-ui/core";
+import Slider from "@material-ui/lab/Slider";
 
-import useStyles from './BoardConfig.styles';
+import useStyles from "./BoardConfig.styles";
 
 interface OwnProps {
   boardSize: number | number[];
@@ -14,11 +14,16 @@ const BoardConfig = (props: OwnProps) => {
   const classes = useStyles();
 
   const onChangeHandler = (event: any, value: number | number[]) => {
-    props.onChange(value);
+    if (props.boardSize !== value) {
+      props.onChange(value);
+    }
   };
 
   return (
     <div className={classes.boardConfigContainer}>
+      <Typography align="center" variant="h2" className={classes.title}>
+        Game Configuration
+      </Typography>
       <Typography align="center" variant="body1">
         Select the board size
       </Typography>

@@ -13,13 +13,10 @@ import {
 import { updateObject } from "../utility";
 
 const initialState: GameState = {
+  boardGrid: [],
   boardSizeConfig: 4,
   discsAmount: 21,
   currentPlayer: "red"
-};
-
-const setCurrentPlayer = (playerColor: "red" | "yellow") => {
-  return playerColor.startsWith("y") ? "red" : "yellow";
 };
 
 const reducer = (state = initialState, action: ConnectFourTypes): GameState => {
@@ -31,23 +28,27 @@ const reducer = (state = initialState, action: ConnectFourTypes): GameState => {
       return state;
     }
     case SET_BOARD_GRID: {
-      return state;
+      return updateObject(state, {
+        boardGrid: state.boardGrid
+      } as GameState);
     }
     case SET_BOARD_CONFIG_NUMBER: {
       return updateObject(state, {
         boardSizeConfig: action.payload.number
-      });
+      } as GameState);
     }
     case SET_DISCS_NUMBER: {
       return updateObject(state, {
-        discsAmount: action.payload.number
-      });
+        discsAmount: setDiscsAmount(action.payload.number)
+      } as GameState);
     }
     case SET_DISCS_PLAYED_NUMBER: {
       return state;
     }
     case SET_CURRENT_PLAYER: {
-      return updateObject(state, setCurrentPlayer(action.payload.playerColor));
+      return updateObject(state, {
+        currentPlayer: setCurrentPlayer(action.payload.playerColor)
+      } as GameState);
     }
     case SET_GAME_OVER: {
       return state;
@@ -56,6 +57,14 @@ const reducer = (state = initialState, action: ConnectFourTypes): GameState => {
       return state;
     }
   }
+};
+
+const setDiscsAmount = (number: number) => {
+  return 5 * number + 1;
+};
+
+const setCurrentPlayer = (playerColor: "red" | "yellow") => {
+  return playerColor.startsWith("y") ? "red" : "yellow";
 };
 
 export default reducer;
