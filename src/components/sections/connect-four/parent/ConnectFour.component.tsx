@@ -1,8 +1,5 @@
 import React from 'react';
 
-import { withStyles } from '@material-ui/styles';
-
-import styles from './ConnectFour.styles';
 import ConnectFourRouting from '../ConnectFour.routing';
 
 export interface ConnectedState {
@@ -23,4 +20,4 @@ class ConnectFour extends React.Component<ConnectedState & ConnectedDispatch> {
   }
 }
 
-export default withStyles(styles)(ConnectFour);
+export default ConnectFour;
