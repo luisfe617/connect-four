@@ -8,8 +8,8 @@ import {
   SET_DISCS_PLAYED_NUMBER,
   SET_CURRENT_PLAYER,
   SET_GAME_OVER
-} from "./actionTypes";
-import { GameState } from "../../core/models/state.model";
+} from './actionTypes';
+import { GameState } from '../../core/models/state.model';
 
 export const addDisc = (payload: any): ConnectFourTypes => {
   return {
@@ -70,7 +70,7 @@ export const setDiscsPlayedNumber = (number: number): ConnectFourTypes => {
 };
 
 export const setCurrentPlayer = (
-  playerColor: "red" | "yellow"
+  playerColor: 'red' | 'yellow'
 ): ConnectFourTypes => {
   return {
     type: SET_CURRENT_PLAYER,

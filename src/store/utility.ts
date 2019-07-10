@@ -1,4 +1,4 @@
-import { GameState } from "../core/models/state.model";
+import { GameState } from '../core/models/state.model';
 
 export const updateObject = (
   oldObject: GameState,

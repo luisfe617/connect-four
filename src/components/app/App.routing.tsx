@@ -17,12 +17,12 @@ const AppRouting: React.FC = () => {
       render={({ location }) => (
         <div className={classes.appContainer}>
           <TransitionGroup>
-            <CSSTransition key={location.key} timeout={1000} classNames="page">
+            <CSSTransition key={location.key} timeout={1000} classNames='page'>
               <Switch location={location}>
                 {[
                   homeRoute,
                   connectFourRoute,
-                  <Redirect key="redirect" to="/" />
+                  <Redirect key='redirect' to='/' />
                 ]}
               </Switch>
             </CSSTransition>

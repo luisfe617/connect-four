@@ -1,4 +1,4 @@
-import { GameState } from "../../core/models/state.model";
+import { GameState } from '../../core/models/state.model';
 import {
   ConnectFourTypes,
   ADD_DISC,
@@ -9,14 +9,14 @@ import {
   SET_DISCS_PLAYED_NUMBER,
   SET_CURRENT_PLAYER,
   SET_GAME_OVER
-} from "../actions/actionTypes";
-import { updateObject } from "../utility";
+} from '../actions/actionTypes';
+import { updateObject } from '../utility';
 
 const initialState: GameState = {
   boardGrid: [],
   boardSizeConfig: 4,
   discsAmount: 21,
-  currentPlayer: "red"
+  currentPlayer: 'red'
 };
 
 const reducer = (state = initialState, action: ConnectFourTypes): GameState => {
@@ -63,8 +63,8 @@ const setDiscsAmount = (number: number) => {
   return 5 * number + 1;
 };
 
-const setCurrentPlayer = (playerColor: "red" | "yellow") => {
-  return playerColor.startsWith("y") ? "red" : "yellow";
+const setCurrentPlayer = (playerColor: 'red' | 'yellow') => {
+  return playerColor.startsWith('y') ? 'red' : 'yellow';
 };
 
 export default reducer;
