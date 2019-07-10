@@ -1,17 +1,17 @@
-import React, { FC } from "react";
+import React, { FC } from 'react';
 
-import { createStore, applyMiddleware } from "redux";
-import { Provider as ReduxProvider } from "react-redux";
-import thunkMiddleware from "redux-thunk";
-import { composeWithDevTools } from "redux-devtools-extension";
-import { BrowserRouter } from "react-router-dom";
-import { MuiThemeProvider } from "@material-ui/core/styles";
-import CssBaseline from "@material-ui/core/CssBaseline";
+import { createStore, applyMiddleware } from 'redux';
+import { Provider as ReduxProvider } from 'react-redux';
+import thunkMiddleware from 'redux-thunk';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import { BrowserRouter } from 'react-router-dom';
+import { MuiThemeProvider } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
-import rootReducer from "../../store/reducers/connect-four";
+import rootReducer from '../../store/reducers/connect-four';
 
-import AppRouting from "./App.routing";
-import theme from "../../styles/js/theme";
+import AppRouting from './App.routing';
+import theme from '../../styles/js/theme';
 
 const middlewares = [thunkMiddleware];
 const middlewareEnhancer = applyMiddleware(...middlewares);

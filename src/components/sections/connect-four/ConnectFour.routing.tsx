@@ -1,23 +1,22 @@
-import React from "react";
-import { Redirect, Route, Switch } from "react-router-dom";
+import React from 'react';
+import { Redirect, Route, Switch } from 'react-router-dom';
 
-import boardRoute from "./sections/board/Board.route";
-import boardConfigRoute from "./sections/board-config/BoardConfig.route";
+import boardRoute from './sections/board/Board.route';
+import boardConfigRoute from './sections/board-config/BoardConfig.route';
 
 const ConnectFourRouting: React.FC = (props: any) => (
   <Route
-    key="game-config"
-    path="/game-config"
-    render={() => (
+    key='boardconfig'
+    path='/board-config'
+    children={() => (
       <Switch>
         {[
           boardConfigRoute(props),
           boardRoute(props),
-          <Redirect key="redirect" to="/game-config" />
+          <Redirect key='redirect' to='/board-config' />
         ]}
       </Switch>
     )}
   />
 );
-
 export default ConnectFourRouting;

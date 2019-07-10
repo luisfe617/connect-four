@@ -1,8 +1,8 @@
-import { createStyles, Theme } from '@material-ui/core/styles';
+import { createStyles, makeStyles } from '@material-ui/core/styles';
 
-const styles = (theme: Theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
-    connectFour: {
+    gameContainer: {
       alignItems: 'center',
       display: 'flex',
       flexDirection: 'column',
@@ -11,6 +11,7 @@ const styles = (theme: Theme) =>
       position: 'absolute',
       width: '100%'
     }
-  });
+  })
+);
 
-export default styles;
+export default useStyles;

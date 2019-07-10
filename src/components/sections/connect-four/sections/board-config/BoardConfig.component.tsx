@@ -1,9 +1,11 @@
-import React from "react";
+import React from 'react';
 
-import { Typography } from "@material-ui/core";
-import Slider from "@material-ui/lab/Slider";
+import { Typography, Button } from '@material-ui/core';
+import Slider from '@material-ui/lab/Slider';
 
-import useStyles from "./BoardConfig.styles";
+import useStyles from './BoardConfig.styles';
+import AdapterLink from '../../../../../core/common/components/AdapterLink';
+import SharedStructure from '../../../../shared/shared-structure/SharedStructure.component';
 
 interface OwnProps {
   boardSize: number | number[];
@@ -20,19 +22,19 @@ const BoardConfig = (props: OwnProps) => {
   };
 
   return (
-    <div className={classes.boardConfigContainer}>
-      <Typography align="center" variant="h2" className={classes.title}>
+    <SharedStructure>
+      <Typography align='center' variant='h2' className={classes.title}>
         Game Configuration
       </Typography>
-      <Typography align="center" variant="body1">
+      <Typography align='center' variant='body1'>
         Select the board size
       </Typography>
       <div className={classes.sliderContainer}>
         <Slider
           defaultValue={props.boardSize}
           valueLabelFormat={sliderTextValue}
-          aria-labelledby="discrete-slider"
-          valueLabelDisplay="on"
+          aria-labelledby='discrete-slider'
+          valueLabelDisplay='on'
           step={1}
           min={4}
           max={10}
@@ -40,7 +42,16 @@ const BoardConfig = (props: OwnProps) => {
           className={classes.slider}
         />
       </div>
-    </div>
+      <Button
+        variant='contained'
+        color='secondary'
+        to='/game-board'
+        className={classes.nextBtn}
+        component={AdapterLink}
+      >
+        Continue
+      </Button>
+    </SharedStructure>
   );
 };
 

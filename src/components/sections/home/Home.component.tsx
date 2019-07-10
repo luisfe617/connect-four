@@ -1,31 +1,32 @@
-import React from "react";
+import React from 'react';
 
-import { Button } from "@material-ui/core";
+import { Button } from '@material-ui/core';
 
-import AdapterLink from "../../../core/common/components/AdapterLink";
-import logoImage from "../../../assets/images/logo.svg";
-import useStyles from "./Home.styles";
+import useStyles from './Home.styles';
+import logoImage from '../../../assets/images/logo.svg';
+import AdapterLink from '../../../core/common/components/AdapterLink';
+import SharedStructure from '../../shared/shared-structure/SharedStructure.component';
 
 const Home = () => {
   const classes = useStyles();
 
   return (
-    <div className={classes.homeContainer}>
+    <SharedStructure>
       <img
-        alt="Connect Four logo"
+        alt='Connect Four logo'
         className={classes.gameIcon}
         src={logoImage}
       />
       <Button
-        variant="contained"
-        color="secondary"
+        variant='contained'
+        color='secondary'
         className={classes.link}
         component={AdapterLink}
-        to="/game-config"
+        to='/board-config'
       >
-        Start Game
+        Start
       </Button>
-    </div>
+    </SharedStructure>
   );
 };
 

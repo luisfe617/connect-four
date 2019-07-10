@@ -1,13 +1,11 @@
-import { connect } from "react-redux";
-import { Dispatch } from "redux";
+import { connect } from 'react-redux';
 
-import * as actionCreators from "../../../../store/actions/actions";
-import { GameState } from "../../../../core/models/state.model";
+import * as actionCreators from '../../../../store/actions/actions';
+import { GameState } from '../../../../core/models/state.model';
 import ConnectFourComponent, {
-  OwnProps,
   ConnectedState,
   ConnectedDispatch
-} from "./ConnectFour.component";
+} from './ConnectFour.component';
 
 const mapStateToProps = (state: GameState): ConnectedState => ({
   boardSizeConfig: state.boardSizeConfig
@@ -18,7 +16,7 @@ const mapDispatchToProps = (dispatch: any): ConnectedDispatch => ({
     dispatch(actionCreators.setBoardConfiguration(number))
 });
 
-export const ConnectFourContainer: React.ComponentClass<OwnProps> = connect(
+export const ConnectFourContainer: React.ComponentClass = connect(
   mapStateToProps,
   mapDispatchToProps
 )(ConnectFourComponent);

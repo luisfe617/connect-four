@@ -1,12 +1,12 @@
-export const ADD_DISC = "ADD_DISC";
-export const REMOVE_DISC = "REMOVE_DISC";
+export const ADD_DISC = 'ADD_DISC';
+export const REMOVE_DISC = 'REMOVE_DISC';
 
-export const SET_BOARD_GRID = "SET_BOARD_GRID";
-export const SET_BOARD_CONFIG_NUMBER = "SET_BOARD_CONFIG_NUMBER";
-export const SET_DISCS_NUMBER = "SET_DISCS_NUMBER";
-export const SET_DISCS_PLAYED_NUMBER = "SET_DISCS_PLAYED_NUMBER";
-export const SET_CURRENT_PLAYER = "SET_CURRENT_PLAYER";
-export const SET_GAME_OVER = "SET_GAME_OVER";
+export const SET_BOARD_GRID = 'SET_BOARD_GRID';
+export const SET_BOARD_CONFIG_NUMBER = 'SET_BOARD_CONFIG_NUMBER';
+export const SET_DISCS_NUMBER = 'SET_DISCS_NUMBER';
+export const SET_DISCS_PLAYED_NUMBER = 'SET_DISCS_PLAYED_NUMBER';
+export const SET_CURRENT_PLAYER = 'SET_CURRENT_PLAYER';
+export const SET_GAME_OVER = 'SET_GAME_OVER';
 
 interface AddDiscAction {
   type: typeof ADD_DISC;
@@ -47,7 +47,7 @@ interface SetDiscsPlayedNumberAction {
 interface SetCurrentPlayerAction {
   type: typeof SET_CURRENT_PLAYER;
   payload: {
-    playerColor: "red" | "yellow";
+    playerColor: 'red' | 'yellow';
   };
 }
 
