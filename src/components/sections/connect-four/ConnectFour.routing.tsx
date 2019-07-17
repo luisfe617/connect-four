@@ -6,14 +6,14 @@ import boardConfigRoute from './sections/board-config/BoardConfig.route';
 
 const ConnectFourRouting: React.FC = (props: any) => (
   <Route
-    key='boardconfig'
-    path='/board-config'
+    key='home'
+    path='/'
     children={() => (
       <Switch>
         {[
           boardConfigRoute(props),
           boardRoute(props),
-          <Redirect key='redirect' to='/board-config' />
+          <Redirect key='redirect' to='/' />
         ]}
       </Switch>
     )}

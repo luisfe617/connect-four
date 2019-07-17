@@ -2,34 +2,46 @@ import { GameState } from '../../core/models/state.model';
 import {
   ConnectFourTypes,
   ADD_DISC,
-  REMOVE_DISC,
-  SET_BOARD_GRID,
+  SET_BOARD_GRID_EMPTY,
   SET_BOARD_CONFIG_NUMBER,
   SET_DISCS_NUMBER,
-  SET_DISCS_PLAYED_NUMBER,
+  INCREMENT_DISCS_PLAYED_NUMBER,
   SET_CURRENT_PLAYER,
-  SET_GAME_OVER
+  SET_GAME_OVER,
+  RESTART_GAME
 } from '../actions/actionTypes';
-import { updateObject } from '../utility';
+import {
+  updateObject,
+  addDiscToBoard,
+  setDiscsAmount,
+  setCurrentPlayer,
+  setEmptyBoard
+} from '../utility';
 
 const initialState: GameState = {
-  boardGrid: [],
+  boardGrid: setEmptyBoard(4),
   boardSizeConfig: 4,
-  discsAmount: 21,
-  currentPlayer: 'red'
+  discsAmount: 42,
+  discsPlayed: 0,
+  currentPlayer: 'red',
+  player1: 'red',
+  player2: 'yellow'
 };
 
 const reducer = (state = initialState, action: ConnectFourTypes): GameState => {
   switch (action.type) {
     case ADD_DISC: {
-      return state;
-    }
-    case REMOVE_DISC: {
-      return state;
-    }
-    case SET_BOARD_GRID: {
       return updateObject(state, {
-        boardGrid: state.boardGrid
+        boardGrid: addDiscToBoard(
+          action.payload.col,
+          state.boardGrid,
+          state.currentPlayer
+        )
+      } as GameState);
+    }
+    case SET_BOARD_GRID_EMPTY: {
+      return updateObject(state, {
+        boardGrid: setEmptyBoard(action.payload.number)
       } as GameState);
     }
     case SET_BOARD_CONFIG_NUMBER: {
@@ -42,8 +54,11 @@ const reducer = (state = initialState, action: ConnectFourTypes): GameState => {
         discsAmount: setDiscsAmount(action.payload.number)
       } as GameState);
     }
-    case SET_DISCS_PLAYED_NUMBER: {
-      return state;
+    case INCREMENT_DISCS_PLAYED_NUMBER: {
+      return {
+        ...state,
+        discsPlayed: state.discsPlayed + 1
+      };
     }
     case SET_CURRENT_PLAYER: {
       return updateObject(state, {
@@ -53,18 +68,15 @@ const reducer = (state = initialState, action: ConnectFourTypes): GameState => {
     case SET_GAME_OVER: {
       return state;
     }
+    case RESTART_GAME: {
+      return {
+        ...initialState
+      };
+    }
     default: {
       return state;
     }
   }
-};
-
-const setDiscsAmount = (number: number) => {
-  return 5 * number + 1;
-};
-
-const setCurrentPlayer = (playerColor: 'red' | 'yellow') => {
-  return playerColor.startsWith('y') ? 'red' : 'yellow';
 };
 
 export default reducer;

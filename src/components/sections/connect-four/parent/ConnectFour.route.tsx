@@ -1,9 +1,9 @@
 import React from 'react';
 import { Route } from 'react-router';
-import { ConnectFourContainer } from './ConnectFour.container';
+import ConnectFourComponent from './ConnectFour.component';
 
 const connectFourRoute: React.ReactNode = (
-  <Route key='game-container' component={ConnectFourContainer} />
+  <Route key='connect-four' component={ConnectFourComponent} />
 );
 
 export default connectFourRoute;

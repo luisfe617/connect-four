@@ -1,19 +1,18 @@
-import React from "react";
+import React from 'react';
 
-import { Fab } from "@material-ui/core";
-import ArrowBack from "@material-ui/icons/ArrowBack";
+import SharedStructure from '../../../../shared/shared-structure/SharedStructure.component';
+import BoardPanel from '../board-panel/BoardPanel.component';
+import BoardOptionsBtn from '../board-options/BoardOptions.component';
+import {
+  ConnectedState,
+  ConnectedDispatch
+} from '../../parent/ConnectFour.component';
 
-import useStyles from "./Board.styles";
-import SharedStructure from "../../../../shared/shared-structure/SharedStructure.component";
-
-const Board = () => {
-  const classes = useStyles();
-
+const Board = (props: ConnectedState & ConnectedDispatch) => {
   return (
     <SharedStructure>
-      <Fab color="secondary" aria-label="Go back" className={classes.backArrow}>
-        <ArrowBack />
-      </Fab>
+      <BoardPanel {...props} />
+      <BoardOptionsBtn {...props} />
     </SharedStructure>
   );
 };
