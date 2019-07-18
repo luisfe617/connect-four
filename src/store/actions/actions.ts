@@ -27,8 +27,8 @@ export const addDiscToBoard = (payload: { column: number }) => {
   };
 };
 
-export const removeDisc = (payload: { col: number }) => {
-  return (dispatch: any, getState: () => GameState) => {};
+export const removeDisc = (payload: { column: number }) => {
+  return (dispatch: any, getState: () => GameState) => { };
 };
 
 export const setBoardConfiguration = (number: number) => {
@@ -66,11 +66,11 @@ export const setBoardGridEmpty = (number: number): ConnectFourTypes => {
   };
 };
 
-export const addDisc = (col: number): ConnectFourTypes => {
+export const addDisc = (column: number): ConnectFourTypes => {
   return {
     type: ADD_DISC,
     payload: {
-      col
+      column
     }
   };
 };

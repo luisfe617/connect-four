@@ -3,7 +3,7 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     configTitle: {
-      fontFamily: 'Bungee Shade',
+      fontFamily: 'Bungee Shade, Open Sans, sans-serif',
       fontSize: '2.5rem',
       marginBottom: theme.spacing(5),
       textTransform: 'uppercase',

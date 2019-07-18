@@ -12,7 +12,7 @@ export const RESTART_GAME = 'RESTART_GAME';
 interface AddDiscAction {
   type: typeof ADD_DISC;
   payload: {
-    col: number;
+    column: number;
   };
 }
 

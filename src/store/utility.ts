@@ -33,20 +33,20 @@ export const setEmptyBoard = (number: number = 4) => {
   return board;
 };
 
-export const isColAvailable = (boardGrid: any[], col: number) => {
-  return boardGrid[col].indexOf(null) !== -1;
+export const isColAvailable = (boardGrid: any[], column: number) => {
+  return boardGrid[column].indexOf(null) !== -1;
 };
 
 export const addDiscToBoard = (
-  col: number,
+  column: number,
   boardGrid: any[],
   currentPlayer: Color
 ) => {
   const boardCopy = cloneDeep(boardGrid);
-  let i = boardCopy[col].length - 1;
+  let i = boardCopy[column].length - 1;
   for (i; i >= 0; i--) {
-    if (boardCopy[col][i] === null) {
-      boardCopy[col][i] = currentPlayer;
+    if (boardCopy[column][i] === null) {
+      boardCopy[column][i] = currentPlayer;
       break;
     }
   }
