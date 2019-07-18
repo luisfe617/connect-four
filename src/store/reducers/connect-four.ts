@@ -33,7 +33,7 @@ const reducer = (state = initialState, action: ConnectFourTypes): GameState => {
     case ADD_DISC: {
       return updateObject(state, {
         boardGrid: addDiscToBoard(
-          action.payload.col,
+          action.payload.column,
           state.boardGrid,
           state.currentPlayer
         )
