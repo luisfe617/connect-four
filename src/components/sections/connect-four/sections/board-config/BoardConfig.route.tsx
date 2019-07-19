@@ -4,8 +4,8 @@ import BoardConfigComponent from './BoardConfig.component';
 
 const boardRoute = (props: any) => (
   <Route
-    key='boardconfig'
-    path='/board-config'
+    key='game-config'
+    path='/'
     exact
     render={() => (
       <BoardConfigComponent

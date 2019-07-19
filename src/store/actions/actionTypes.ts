@@ -1,26 +1,26 @@
-export const ADD_DISC = 'ADD_DISC';
-export const REMOVE_DISC = 'REMOVE_DISC';
+import { Color } from '../../core/models/color.model';
 
-export const SET_BOARD_GRID = 'SET_BOARD_GRID';
+export const ADD_DISC = 'ADD_DISC';
+export const SET_BOARD_GRID_EMPTY = 'SET_BOARD_GRID_EMPTY';
 export const SET_BOARD_CONFIG_NUMBER = 'SET_BOARD_CONFIG_NUMBER';
 export const SET_DISCS_NUMBER = 'SET_DISCS_NUMBER';
-export const SET_DISCS_PLAYED_NUMBER = 'SET_DISCS_PLAYED_NUMBER';
+export const INCREMENT_DISCS_PLAYED_NUMBER = 'INCREMENT_DISCS_PLAYED_NUMBER';
 export const SET_CURRENT_PLAYER = 'SET_CURRENT_PLAYER';
 export const SET_GAME_OVER = 'SET_GAME_OVER';
+export const RESTART_GAME = 'RESTART_GAME';
 
 interface AddDiscAction {
   type: typeof ADD_DISC;
-  payload: any;
+  payload: {
+    column: number;
+  };
 }
 
-interface RemoveDiscAction {
-  type: typeof REMOVE_DISC;
-  payload: any;
-}
-
-interface SetBoardGridAction {
-  type: typeof SET_BOARD_GRID;
-  payload: any;
+interface SetBoardGridEmptyAction {
+  type: typeof SET_BOARD_GRID_EMPTY;
+  payload: {
+    number: number;
+  };
 }
 
 interface SetBoardConfigNumberAction {
@@ -37,17 +37,14 @@ interface SetDiscsNumberAction {
   };
 }
 
-interface SetDiscsPlayedNumberAction {
-  type: typeof SET_DISCS_PLAYED_NUMBER;
-  payload: {
-    number: number;
-  };
+interface IncrementDiscsPlayedNumberAction {
+  type: typeof INCREMENT_DISCS_PLAYED_NUMBER;
 }
 
 interface SetCurrentPlayerAction {
   type: typeof SET_CURRENT_PLAYER;
   payload: {
-    playerColor: 'red' | 'yellow';
+    playerColor: Color;
   };
 }
 
@@ -56,12 +53,16 @@ interface SetGameOverAction {
   payload: boolean;
 }
 
+interface RestartGameAction {
+  type: typeof RESTART_GAME;
+}
+
 export type ConnectFourTypes =
   | AddDiscAction
-  | RemoveDiscAction
-  | SetBoardGridAction
+  | SetBoardGridEmptyAction
   | SetBoardConfigNumberAction
   | SetDiscsNumberAction
-  | SetDiscsPlayedNumberAction
+  | IncrementDiscsPlayedNumberAction
   | SetCurrentPlayerAction
-  | SetGameOverAction;
+  | SetGameOverAction
+  | RestartGameAction;

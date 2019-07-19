@@ -23,8 +23,8 @@ const BoardConfig = (props: OwnProps) => {
 
   return (
     <SharedStructure>
-      <Typography align='center' variant='h2' className={classes.title}>
-        Game Configuration
+      <Typography align='center' variant='h1' className={classes.configTitle}>
+        Connect 4
       </Typography>
       <Typography align='center' variant='body1'>
         Select the board size
@@ -40,16 +40,23 @@ const BoardConfig = (props: OwnProps) => {
           max={10}
           onChangeCommitted={onChangeHandler}
           className={classes.slider}
+          classes={{
+            root: classes.sliderRoot,
+            thumb: classes.sliderThumb,
+            track: classes.sliderTrack,
+            rail: classes.sliderRail,
+            valueLabel: classes.sliderValueLabel
+          }}
         />
       </div>
       <Button
         variant='contained'
         color='secondary'
         to='/game-board'
-        className={classes.nextBtn}
+        className={classes.configNextBtn}
         component={AdapterLink}
       >
-        Continue
+        Start
       </Button>
     </SharedStructure>
   );
