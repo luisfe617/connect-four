@@ -1,16 +1,22 @@
 import React from 'react';
 
 import useStyles from './BoardDisc.styles';
+import { OwnProps as ParentProps } from '../board-panel/BoardPanel.component';
 
-const BoardDisc = (props: any) => {
-  const { x, y, boardGrid, currentPlayer, onDiscAdded } = props;
+interface OwnProps extends ParentProps {
+  x: number;
+  y: number;
+}
+
+const BoardDisc = (props: OwnProps) => {
+  const { x, y, boardGrid, currentPlayer, actions } = props;
 
   const classes = useStyles({
     nColumns: boardGrid.length,
     color: currentPlayer
   });
 
-  const onClickHandler = () => onDiscAdded(y);
+  const onClickHandler = () => actions.addDisc(y);
 
   const discClasses = () => [classes.disc, classes.discSize].join(' ');
 

@@ -1,24 +1,8 @@
-import { Color } from '../core/models/color.model';
-import { GameState } from '../core/models/state.model';
+import { Color } from '../models/color.model';
+import { GameState } from '../models/state.model';
 import cloneDeep from 'lodash/cloneDeep';
 
-export const updateObject = (
-  oldObject: GameState,
-  updatedValues: any
-): GameState => {
-  return {
-    ...cloneDeep(oldObject),
-    ...cloneDeep(updatedValues)
-  };
-};
-
-export const setDiscsAmount = (number: number) => {
-  return 5 * number + 1;
-};
-
-export const setCurrentPlayer = (playerColor: Color) => {
-  return playerColor.startsWith('y') ? 'red' : 'yellow';
-};
+/* CONFIGURATION */
 
 export const setEmptyBoard = (number: number = 4) => {
   const nColumns = 2 * number - 1;
@@ -33,8 +17,22 @@ export const setEmptyBoard = (number: number = 4) => {
   return board;
 };
 
+export const setDiscsAmount = (number: number) => {
+  return 5 * number + 1;
+};
+
+/* GAME */
+
+export const isDiscPlayable = (state: GameState, nColumn: number) =>
+  state.discsPlayed < state.discsAmount &&
+  isColAvailable(state.boardGrid, nColumn);
+
 export const isColAvailable = (boardGrid: any[], column: number) => {
   return boardGrid[column].indexOf(null) !== -1;
+};
+
+export const setCurrentPlayer = (playerColor: Color) => {
+  return playerColor.startsWith('y') ? 'red' : 'yellow';
 };
 
 export const addDiscToBoard = (
@@ -52,3 +50,13 @@ export const addDiscToBoard = (
   }
   return boardCopy;
 };
+
+const boardUtils = {
+  setEmptyBoard,
+  setDiscsAmount,
+  isDiscPlayable,
+  isColAvailable,
+  setCurrentPlayer,
+  addDiscToBoard
+};
+export default boardUtils;

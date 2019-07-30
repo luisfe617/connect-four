@@ -1,4 +1,5 @@
 import { Color } from '../../core/models/color.model';
+import { GameStatus } from '../../core/models/gameStatus.model';
 
 export const ADD_DISC = 'ADD_DISC';
 export const SET_BOARD_GRID_EMPTY = 'SET_BOARD_GRID_EMPTY';
@@ -6,7 +7,7 @@ export const SET_BOARD_CONFIG_NUMBER = 'SET_BOARD_CONFIG_NUMBER';
 export const SET_DISCS_NUMBER = 'SET_DISCS_NUMBER';
 export const INCREMENT_DISCS_PLAYED_NUMBER = 'INCREMENT_DISCS_PLAYED_NUMBER';
 export const SET_CURRENT_PLAYER = 'SET_CURRENT_PLAYER';
-export const SET_GAME_OVER = 'SET_GAME_OVER';
+export const SET_GAME_STATUS = 'SET_GAME_STATUS';
 export const RESTART_GAME = 'RESTART_GAME';
 
 interface AddDiscAction {
@@ -48,9 +49,11 @@ interface SetCurrentPlayerAction {
   };
 }
 
-interface SetGameOverAction {
-  type: typeof SET_GAME_OVER;
-  payload: boolean;
+interface SetGameStatusAction {
+  type: typeof SET_GAME_STATUS;
+  payload: {
+    status: GameStatus;
+  };
 }
 
 interface RestartGameAction {
@@ -64,5 +67,5 @@ export type ConnectFourTypes =
   | SetDiscsNumberAction
   | IncrementDiscsPlayedNumberAction
   | SetCurrentPlayerAction
-  | SetGameOverAction
+  | SetGameStatusAction
   | RestartGameAction;

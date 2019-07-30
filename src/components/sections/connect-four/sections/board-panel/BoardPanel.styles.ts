@@ -8,16 +8,16 @@ const useStyles = makeStyles((theme: Theme) =>
       borderStyle: 'solid',
       borderRightColor: theme.palette.primary.light,
       borderLeftColor: theme.palette.primary.light,
-      borderWidth: theme.spacing(1),
       boxShadow: '0 0 30px #ccc',
       boxSizing: 'border-box',
       display: 'flex',
       maxWidth: '90vw',
       overflow: 'hidden',
-      padding: theme.spacing(1),
       '@media (min-width:768px)': {
-        maxWidth: '55vw'
-      },
+        borderWidth: theme.spacing(1),
+        maxWidth: '55vw',
+        padding: theme.spacing(1)
+      }
     },
     boardColumn: (props: any) => ({
       maxWidth: '50px',

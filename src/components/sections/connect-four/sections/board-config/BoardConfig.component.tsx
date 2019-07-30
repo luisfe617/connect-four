@@ -8,16 +8,19 @@ import AdapterLink from '../../../../../core/common/components/AdapterLink';
 import SharedStructure from '../../../../shared/shared-structure/SharedStructure.component';
 
 interface OwnProps {
-  boardSize: number | number[];
-  onChange: (value: number | number[]) => void;
+  boardSizeConfig: number | number[];
+  actions: {
+    changeBoardSize: (number: number | number[]) => void;
+  };
 }
 
 const BoardConfig = (props: OwnProps) => {
   const classes = useStyles();
+  const { actions, boardSizeConfig } = props;
 
-  const onChangeHandler = (event: any, value: number | number[]) => {
-    if (props.boardSize !== value) {
-      props.onChange(value);
+  const onChangeHandler = (_: any, value: number | number[]) => {
+    if (boardSizeConfig !== value) {
+      actions.changeBoardSize(value);
     }
   };
 
@@ -31,7 +34,7 @@ const BoardConfig = (props: OwnProps) => {
       </Typography>
       <div className={classes.sliderContainer}>
         <Slider
-          defaultValue={props.boardSize}
+          defaultValue={boardSizeConfig}
           valueLabelFormat={sliderTextValue}
           aria-labelledby='discrete-slider'
           valueLabelDisplay='on'

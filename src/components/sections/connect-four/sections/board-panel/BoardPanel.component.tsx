@@ -2,8 +2,17 @@ import React from 'react';
 
 import useStyles from './BoardPanel.styles';
 import BoardDisc from '../board-disc/BoardDisc.component';
+import { Color } from '../../../../../core/models/color.model';
 
-const BoardPanel = (props: any) => {
+export interface OwnProps {
+  boardGrid: any[];
+  currentPlayer: Color;
+  actions: {
+    addDisc: (column: number) => void;
+  };
+}
+
+const BoardPanel = (props: OwnProps) => {
   const classes = useStyles({ nColumns: props.boardGrid.length });
 
   return (
