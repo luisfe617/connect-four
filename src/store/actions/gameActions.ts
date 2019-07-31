@@ -28,17 +28,14 @@ export class ConnectFourActions {
 
       let winner = checkWinner(getState().boardGrid);
       if (winner === 'red') {
-        alert('Red player wins!');
         dispatch(GameActions.setGameStatus('player1_wins'));
       }
       if (winner === 'yellow') {
-        alert('Yellow player wins!');
         dispatch(GameActions.setGameStatus('player2_wins'));
       }
     }
 
-    if (getState().discsPlayed > getState().discsAmount) {
-      alert('Draw!');
+    if (getState().discsPlayed >= getState().discsAmount / 2) {
       dispatch(GameActions.setGameStatus('draw'));
     }
   };

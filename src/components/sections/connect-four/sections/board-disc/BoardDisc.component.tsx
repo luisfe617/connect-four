@@ -1,7 +1,7 @@
 import React from 'react';
 
 import useStyles from './BoardDisc.styles';
-import { OwnProps as ParentProps } from '../board-panel/BoardPanel.component';
+import { OwnProps as ParentProps } from '../board/Board.component';
 
 interface OwnProps extends ParentProps {
   x: number;

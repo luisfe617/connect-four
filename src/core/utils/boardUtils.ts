@@ -18,13 +18,13 @@ export const setEmptyBoard = (number: number = 4) => {
 };
 
 export const setDiscsAmount = (number: number) => {
-  return 5 * number + 1;
+  return (5 * number + 1) * 2;
 };
 
 /* GAME */
 
 export const isDiscPlayable = (state: GameState, nColumn: number) =>
-  state.discsPlayed < state.discsAmount &&
+  state.discsPlayed < state.discsAmount / 2 &&
   isColAvailable(state.boardGrid, nColumn);
 
 export const isColAvailable = (boardGrid: any[], column: number) => {

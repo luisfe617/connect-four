@@ -14,6 +14,8 @@ export interface ConnectedState {
   boardSizeConfig: number;
   currentPlayer: Color;
   gameStatus: GameStatus;
+  discsAmount: number;
+  discsPlayed: number;
 }
 
 class ConnectFour extends React.Component<ConnectedState> {
@@ -30,7 +32,9 @@ const mapStateToProps = (state: GameState): ConnectedState => ({
   boardGrid: state.boardGrid,
   boardSizeConfig: state.boardSizeConfig,
   currentPlayer: state.currentPlayer,
-  gameStatus: state.gameStatus
+  gameStatus: state.gameStatus,
+  discsAmount: state.discsAmount,
+  discsPlayed: state.discsPlayed
 });
 
 const mapDispatchToProps = (dispatch: any) => ({

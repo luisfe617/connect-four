@@ -6,9 +6,10 @@ const checkVerticalDiscs = (grid: any[]) => {
   let discCount = 0;
 
   for (let col = 0; col < columnsN; col++) {
+    discCount = 0;
+    discColor = '';
     for (let row = 0; row < rowsN; row++) {
       let disc = grid[col][row];
-
       if (!disc) {
         discCount = 0;
         discColor = '';

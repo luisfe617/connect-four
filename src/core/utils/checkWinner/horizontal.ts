@@ -6,6 +6,8 @@ const checkHorizontalDiscs = (grid: any[]) => {
   let discCount = 0;
 
   for (let x = 0; x < rowsN; x++) {
+    discCount = 0;
+    discColor = '';
     for (let y = 0; y < columnsN; y++) {
       let disc = grid[y][x];
 
