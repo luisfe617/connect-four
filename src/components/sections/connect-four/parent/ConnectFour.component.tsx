@@ -1,24 +1,24 @@
 import React from 'react';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import * as actionCreators from '../../../../store/actions/actions';
+import ConnectFourRouting from '../ConnectFour.routing';
 import { GameState } from '../../../../core/models/state.model';
 import { Color } from '../../../../core/models/color.model';
-import ConnectFourRouting from '../ConnectFour.routing';
+import { ConnectFourActions } from '../../../../store/actions/gameActions';
+import { ConnectFourConfigActions } from '../../../../store/actions/configurationActions';
+import { GameStatus } from '../../../../core/models/gameStatus.model';
 
 export interface ConnectedState {
   boardGrid: any;
   boardSizeConfig: number;
   currentPlayer: Color;
+  gameStatus: GameStatus;
+  discsAmount: number;
+  discsPlayed: number;
 }
 
-export interface ConnectedDispatch {
-  onBoardSizeChange: (number: number) => void;
-  onDiscAdded: (column: number) => void;
-  onRestartGame: () => void;
-}
-
-class ConnectFour extends React.Component<ConnectedState & ConnectedDispatch> {
+class ConnectFour extends React.Component<ConnectedState> {
   render() {
     return (
       <>
@@ -31,15 +31,21 @@ class ConnectFour extends React.Component<ConnectedState & ConnectedDispatch> {
 const mapStateToProps = (state: GameState): ConnectedState => ({
   boardGrid: state.boardGrid,
   boardSizeConfig: state.boardSizeConfig,
-  currentPlayer: state.currentPlayer
+  currentPlayer: state.currentPlayer,
+  gameStatus: state.gameStatus,
+  discsAmount: state.discsAmount,
+  discsPlayed: state.discsPlayed
 });
 
-const mapDispatchToProps = (dispatch: any): ConnectedDispatch => ({
-  onBoardSizeChange: (number: number) =>
-    dispatch(actionCreators.setBoardConfiguration(number)),
-  onDiscAdded: (column: number) =>
-    dispatch(actionCreators.addDiscToBoard({ column })),
-  onRestartGame: () => dispatch(actionCreators.restartGame())
+const mapDispatchToProps = (dispatch: any) => ({
+  actions: bindActionCreators(
+    {
+      changeBoardSize: ConnectFourConfigActions.setBoardConfiguration,
+      addDisc: ConnectFourActions.addDiscToBoard,
+      restartGame: ConnectFourActions.restartGame
+    },
+    dispatch
+  )
 });
 
 export default connect(

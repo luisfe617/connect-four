@@ -2,8 +2,9 @@ import React from 'react';
 
 import useStyles from './BoardPanel.styles';
 import BoardDisc from '../board-disc/BoardDisc.component';
+import { OwnProps as ParentProps } from '../board/Board.component';
 
-const BoardPanel = (props: any) => {
+const BoardPanel = (props: ParentProps) => {
   const classes = useStyles({ nColumns: props.boardGrid.length });
 
   return (

@@ -7,12 +7,7 @@ const boardRoute = (props: any) => (
     key='game-config'
     path='/'
     exact
-    render={() => (
-      <BoardConfigComponent
-        boardSize={props.boardSizeConfig}
-        onChange={props.onBoardSizeChange}
-      />
-    )}
+    render={() => <BoardConfigComponent {...props} />}
   />
 );
 export default boardRoute;

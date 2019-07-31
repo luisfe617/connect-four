@@ -7,23 +7,19 @@ import {
   SET_DISCS_NUMBER,
   INCREMENT_DISCS_PLAYED_NUMBER,
   SET_CURRENT_PLAYER,
-  SET_GAME_OVER,
+  SET_GAME_STATUS,
   RESTART_GAME
 } from '../actions/actionTypes';
-import {
-  updateObject,
-  addDiscToBoard,
-  setDiscsAmount,
-  setCurrentPlayer,
-  setEmptyBoard
-} from '../utility';
+import { updateObject } from '../../core/utils/objUtils';
+import boardUtils from '../../core/utils/boardUtils';
 
 const initialState: GameState = {
-  boardGrid: setEmptyBoard(4),
+  boardGrid: boardUtils.setEmptyBoard(4),
   boardSizeConfig: 4,
   discsAmount: 42,
   discsPlayed: 0,
   currentPlayer: 'red',
+  gameStatus: 'started',
   player1: 'red',
   player2: 'yellow'
 };
@@ -32,7 +28,7 @@ const reducer = (state = initialState, action: ConnectFourTypes): GameState => {
   switch (action.type) {
     case ADD_DISC: {
       return updateObject(state, {
-        boardGrid: addDiscToBoard(
+        boardGrid: boardUtils.addDiscToBoard(
           action.payload.column,
           state.boardGrid,
           state.currentPlayer
@@ -41,7 +37,7 @@ const reducer = (state = initialState, action: ConnectFourTypes): GameState => {
     }
     case SET_BOARD_GRID_EMPTY: {
       return updateObject(state, {
-        boardGrid: setEmptyBoard(action.payload.number)
+        boardGrid: boardUtils.setEmptyBoard(action.payload.number)
       } as GameState);
     }
     case SET_BOARD_CONFIG_NUMBER: {
@@ -51,7 +47,7 @@ const reducer = (state = initialState, action: ConnectFourTypes): GameState => {
     }
     case SET_DISCS_NUMBER: {
       return updateObject(state, {
-        discsAmount: setDiscsAmount(action.payload.number)
+        discsAmount: boardUtils.setDiscsAmount(action.payload.number)
       } as GameState);
     }
     case INCREMENT_DISCS_PLAYED_NUMBER: {
@@ -62,11 +58,14 @@ const reducer = (state = initialState, action: ConnectFourTypes): GameState => {
     }
     case SET_CURRENT_PLAYER: {
       return updateObject(state, {
-        currentPlayer: setCurrentPlayer(action.payload.playerColor)
+        currentPlayer: boardUtils.setCurrentPlayer(action.payload.playerColor)
       } as GameState);
     }
-    case SET_GAME_OVER: {
-      return state;
+    case SET_GAME_STATUS: {
+      return {
+        ...state,
+        gameStatus: action.payload.status
+      };
     }
     case RESTART_GAME: {
       return {
